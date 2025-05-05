@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kohi N Pan - Product Detail</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<header>
+<div class="logo">
+    <h1>☕Kōhī n Pan</h1>
+</div>
+<div class="menu-toggle" id="mobile-menu">
+    <i class="fas fa-bars"></i>
+</div>
+<nav class="nav-menu">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html" class="active">Products</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html" id="login-link">Login</a></li>
+        <li><a href="register.html">Register</a></li>
+    </ul>
+</nav>
+<div class="search-cart">
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search...">
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="cart-icon">
+        <a href="cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            <span id="cart-count">0</span>
+        </a>
+    </div>
+</div>
+</header>
+
+<section class="product-detail-container" id="product-detail">
+<!-- Product detail will be loaded here via JavaScript -->
+</section>
+
+<section class="related-products">
+<h2>You May Also Like</h2>
+<div class="product-grid" id="related-products-container">
+    <!-- Related products will be loaded here via JavaScript -->
+</div>
+</section>
+
+<footer>
+<div class="footer-content">
+    <div class="footer-section">
+        <h3>☕Kōhī n Pan</h3>
+        <p>Your destination for premium coffee and freshly baked bread.</p>
+    </div>
+    <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+        </ul>
+    </div>
+    <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Coffee Street, Bakery City</p>
+        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+        <p><i class="fas fa-envelope"></i> info@kohinpan.com</p>
+    </div>
+    <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+        </div>
+    </div>
+</div>
+<div class="footer-bottom">
+    <p>&copy; 2023 Kōhī n Pan. All Rights Reserved.</p>
+</div>
+</footer>
+
+<script>
+// Mobile menu toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+    
+    // Define products directly in this file
+    const products = [
+        {
+                id: 1,
+                name: "Americano",
+                price: 3.99,
+                description: "Freshly pulled shots of espresso poured over cold water and ice. Simple, strong, and refreshingly smooth.",
+                category: "Iced Coffee",
+                image: "images/2.png",
+                size: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 2,
+                name: "Caramel Latte",
+                price: 4.99,
+                description: "Smooth espresso, creamy milk, and sweet caramel over ice—chill, sweet, and a total crowd favorite.",
+                category: "Iced Coffee",
+                image: "images/1.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 3,
+                name: "Caramel Macchiato",
+                price: 4.49,
+                description: "Layered, luscious, and lightly sweet—milk and vanilla meet bold espresso, topped with a golden caramel drizzle.",
+                category: "Iced Coffee",
+                image: "images/3.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 4,
+                name: "Choco Milk",
+                price: 6.99,
+                description: "Creamy, chocolatey, and nostalgic—your childhood favorite, now served ice-cold and extra smooth.",
+                category: "Non-Coffee",
+                image: "images/4.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 5,
+                name: "Dirty Matcha",
+                price: 4.99,
+                description: "Earthy meets edgy—smooth matcha mixed with milk, “dirtied” up with a bold espresso shot.",
+                category: "Iced Coffee",
+                image: "images/5.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 6,
+                name: "Latte",
+                price: 3.49,
+                description: "Simple, smooth, and satisfying—espresso and milk over ice for that mellow, creamy coffee fix.",
+                category: "Iced Coffee",
+                image: "images/6.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 7,
+                name: "Matcha Latte",
+                price: 3.99,
+                description: "Creamy, earthy, and totally refreshing—premium matcha blended with milk and ice for a smooth, mellow sip.",
+                category: "Non-Coffee",
+                image: "images/7.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 8,
+                name: "Salted Caramel Macchiato",
+                price: 4.29,
+                description: "Sweet, salty, and seriously smooth—espresso layered with milk, vanilla, and a rich salted caramel drizzle.",
+                category: "Iced Coffee",
+                image: "images/8.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 9,
+                name: "Spanish Cinnamon Cream Latte",
+                price: 4.29,
+                description: "Warm, spicy, and creamy—espresso meets cinnamon, topped with a smooth, velvety cream for that perfect balance of heat and sweetness.",
+                category: "Iced Coffee",
+                image: "images/9.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 10,
+                name: "Spanish Latte",
+                price: 4.29,
+                description: "Sweet, smooth, and oh-so-creamy—espresso, steamed milk, and a touch of condensed milk for a rich, comforting treat.",
+                category: "Iced Coffee",
+                image: "images/10.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 11,
+                name: "Strawberry Matcha",
+                price: 4.29,
+                description: "A refreshing twist on classic matcha—smooth matcha paired with sweet strawberry and milk, served ice-cold for a vibrant, fruity sip.",
+                category: "Non-Coffee",
+                image: "images/11.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 12,
+                name: "Strawberry Milk",
+                price: 4.29,
+                description: "Sweet, creamy, and downright delicious—fresh milk combined with luscious strawberry syrup for a nostalgic, fruity treat.",
+                category: "Non-Coffee",
+                image: "images/12.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 13,
+                name: "White Mocha MAtcha Latte",
+                price: 4.29,
+                description: "A decadent twist on matcha—smooth white chocolate paired with earthy matcha, finished with steamed milk for a rich, creamy sip.",
+                category: "Non-Coffee",
+                image: "images/13.png",
+                sizes: ["12oz", "16oz", "22oz"]
+            },
+            {
+                id: 14,
+                name: "French Toast",
+                price: 4.29,
+                description: "Golden, crispy, and oh-so-soft on the inside—classic French toast served with a dusting of powdered sugar and a drizzle of syrup.",
+                category: "Snacks",
+                image: "images/17.png"
+            },
+            {
+                id: 15,
+                name: "Fries",
+                price: 4.29,
+                description: "Crispy on the outside, fluffy on the inside—golden fries served hot and ready to dip in your favorite sauce.",
+                category: "Snacks",
+                image: "images/16.png"
+            },
+            {
+                id: 16,
+                name: "Garlic Buns",
+                price: 4.29,
+                description: "Soft, buttery, and packed with that irresistible garlic flavor—freshly baked buns.",
+                category: "Snacks",
+                image: "images/15.png"
+            },
+            {
+                id: 17,
+                name: "Grilled Cheese",
+                price: 4.29,
+                description: "We take two slices of your favorite bread, pile them high with gooey, melted cheese, and grill them to golden perfection.",
+                category: "Snacks",
+                image: "images/14.png"
+            }
+
+            ];
+
+// Save products to localStorage for other pages to use
+localStorage.setItem('products', JSON.stringify(products));
+    
+    // Get product ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = parseInt(urlParams.get('id'));
+    
+    if (productId) {
+        const product = products.find(p => p.id === productId);
+        
+        if (product) {
+            // Create product detail HTML
+            const productDetailContainer = document.getElementById('product-detail');
+            const productDetail = document.createElement('div');
+            productDetail.classList.add('product-detail');
+            
+            // Create size options HTML if product is coffee
+            let sizeOptionsHTML = '';
+            if (product.category === 'coffee' && product.sizes) {
+                sizeOptionsHTML = `
+                    <div class="size-options">
+                        <h4>Select Size:</h4>
+                        <div class="size-selector">
+                            ${product.sizes.map((size, index) => `
+                                <div class="size-option">
+                                    <input type="radio" id="size-${size}" name="size" value="${size}" ${index === 0 ? 'checked' : ''}>
+                                    <label for="size-${size}">${size}</label>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Calculate price adjustments based on size
+            let priceHTML = `<div class="product-price">$${product.price.toFixed(2)}</div>`;
+            if (product.category === 'coffee') {
+                priceHTML = `
+                    <div class="product-price" id="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="price-note">(Price may vary based on size)</div>
+                `;
+            }
+            
+            productDetail.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="product-info">
+                    <h2>${product.name}</h2>
+                    ${priceHTML}
+                    <div class="product-description">
+                        <p>${product.description}</p>
+                    </div>
+                    <div class="product-meta">
+                        <p><strong>Category:</strong> ${capitalizeFirstLetter(product.category)}</p>
+                    </div>
+                    ${sizeOptionsHTML}
+                    <div class="quantity-selector">
+                        <button id="decrease-quantity">-</button>
+                        <input type="number" id="quantity" value="1" min="1" max="10">
+                        <button id="increase-quantity">+</button>
+                    </div>
+                    <button id="add-to-cart" class="btn btn-primary">Add to Cart</button>
+                </div>
+            `;
+            
+            productDetailContainer.appendChild(productDetail);
+            
+            // Add event listeners for quantity selector and add to cart button
+            const decreaseBtn = document.getElementById('decrease-quantity');
+            const increaseBtn = document.getElementById('increase-quantity');
+            const quantityInput = document.getElementById('quantity');
+            const addToCartBtn = document.getElementById('add-to-cart');
+            
+            decreaseBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue > 1) {
+                    quantityInput.value = currentValue - 1;
+                }
+            });
+            
+            increaseBtn.addEventListener('click', () => {
+                const currentValue = parseInt(quantityInput.value);
+                if (currentValue < 10) {
+                    quantityInput.value = currentValue + 1;
+                }
+            });
+            
+            // Update price based on size selection for coffee products
+            if (product.category === 'coffee') {
+                const sizeInputs = document.querySelectorAll('input[name="size"]');
+                const priceDisplay = document.getElementById('product-price');
+                
+                sizeInputs.forEach(input => {
+                    input.addEventListener('change', () => {
+                        let priceAdjustment = 0;
+                        
+                        // Adjust price based on selected size
+                        switch(input.value) {
+                            case '12oz':
+                                priceAdjustment = 0; // Base price
+                                break;
+                            case '16oz':
+                                priceAdjustment = 1.00; // $1 more
+                                break;
+                            case '22oz':
+                                priceAdjustment = 2.00; // $2 more
+                                break;
+                        }
+                        
+                        const adjustedPrice = product.price + priceAdjustment;
+                        priceDisplay.textContent = `$${adjustedPrice.toFixed(2)}`;
+                    });
+                });
+            }
+            
+            addToCartBtn.addEventListener('click', () => {
+                const quantity = parseInt(quantityInput.value);
+                let selectedSize = '';
+                let adjustedPrice = product.price;
+                
+                // Get selected size for coffee products
+                if (product.category === 'coffee') {
+                    const sizeInput = document.querySelector('input[name="size"]:checked');
+                    if (sizeInput) {
+                        selectedSize = sizeInput.value;
+                        
+                        // Adjust price based on selected size
+                        switch(selectedSize) {
+                            case '12oz':
+                                adjustedPrice = product.price; // Base price
+                                break;
+                            case '16oz':
+                                adjustedPrice = product.price + 1.00; // $1 more
+                                break;
+                            case '22oz':
+                                adjustedPrice = product.price + 2.00; // $2 more
+                                break;
+                        }
+                    }
+                }
+                
+                // Add to cart with size information
+                addToCart(product, quantity, selectedSize, adjustedPrice);
+                
+                // Show confirmation message
+                alert(`${quantity} ${product.name}${quantity > 1 ? 's' : ''} ${selectedSize ? `(${selectedSize})` : ''} added to cart!`);
+            });
+            
+            // Load related products
+            const relatedProductsContainer = document.getElementById('related-products-container');
+            if (relatedProductsContainer) {
+                // Get products from the same category
+                const relatedProducts = products
+                    .filter(p => p.category === product.category && p.id !== product.id)
+                    .slice(0, 4);
+                
+                relatedProducts.forEach(relatedProduct => {
+                    const productCard = createProductCard(relatedProduct);
+                    relatedProductsContainer.appendChild(productCard);
+                });
+            }
+        } else {
+            // Product not found
+            const productDetailContainer = document.getElementById('product-detail');
+            productDetailContainer.innerHTML = `
+                <div class="product-not-found">
+                    <h2>Product Not Found</h2>
+                    <p>Sorry, the product you are looking for does not exist.</p>
+                    <a href="products.html" class="btn btn-primary">Back to Products</a>
+                </div>
+            `;
+        }
+    }
+    
+    // Update cart count
+    updateCartCount();
+});
+
+// Helper Functions
+function createProductCard(product) {
+    const card = document.createElement('div');
+    card.classList.add('product-card');
+    
+    card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}" class="product-image">
+        <h3 class="product-name">${product.name}</h3>
+        <p class="product-price">$${product.price.toFixed(2)}</p>
+        <div class="product-actions">
+            <a href="product-detail.html?id=${product.id}" class="btn btn-secondary">View Details</a>
+            <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
+        </div>
+    `;
+    
+    // Add event listener for add to cart button
+    const addToCartBtn = card.querySelector('.add-to-cart-btn');
+    addToCartBtn.addEventListener('click', () => {
+        addToCart(product, 1);
+        alert(`${product.name} added to cart!`);
+    });
+    
+    return card;
+}
+
+function addToCart(product, quantity, size = '', adjustedPrice = product.price) {
+    // Get existing cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Create a unique identifier for the product+size combination
+    const itemId = size ? `${product.id}-${size}` : product.id;
+    
+    // Check if this product+size combination is already in the cart
+    const existingItemIndex = cart.findIndex(item => 
+        (item.id === product.id && item.size === size) || 
+        (item.uniqueId && item.uniqueId === itemId)
+    );
+    
+    if (existingItemIndex >= 0) {
+        // Update existing item
+        cart[existingItemIndex].quantity += quantity;
+    } else {
+        // Add new item
+        cart.push({
+            id: product.id,
+            uniqueId: itemId,
+            name: product.name,
+            price: adjustedPrice,
+            image: product.image,
+            quantity: quantity,
+            size: size
+        });
+    }
+    
+    // Save cart to localStorage
+    localStorage.setItem('cart', JSON.stringify(cart));
+    
+    // Update cart count
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+    
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+        cartCountElement.textContent = totalItems;
+    }
+}
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+</script>
+</body>
+</html>
